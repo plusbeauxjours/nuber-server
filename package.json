@@ -5,8 +5,16 @@
   "repository": "https://github.com/plusbeauxjours/nuber-server.git",
   "author": "plusbeauxjours <plusbeauxjours@gmail.com>",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "cors": "^2.8.4",
+    "graphql-yoga": "^1.16.2",
+    "helmet": "^3.13.0",
+    "morgan": "^1.9.1"
+  },
   "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/helmet": "^0.0.42",
+    "@types/morgan": "^1.7.35",
     "@types/node": "^10.11.2",
     "nodemon": "^1.18.4",
     "ts-node": "^7.0.1",
