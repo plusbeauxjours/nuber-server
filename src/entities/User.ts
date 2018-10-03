@@ -39,6 +39,28 @@ class User extends BaseEntity{
     @Column({ type: "text" })
     profilePhoto: string;
 
+    @Column({ type: "boolean", default: false})
+    isDriving: boolean;
+    
+    @Column({ type: "boolean", default: false})
+    isRidding: boolean;
+    
+    @Column({ type: "boolean", default: false})
+    isTaken: boolean;
+    
+    @Column({ type: "double precision", default: 0 })
+    lastLng: number;
+    
+    @Column({ type: "double precision", default: 0 })
+    lastLat: number;
+    
+    @Column({ type: "double precision", default: 0 })
+    lastOrientation: number;
+    
+    get fullname(): string {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
     @CreateDateColumn() createdAt: string;
     @UpdateDateColumn() updatedAt: string;
 
