@@ -68,6 +68,10 @@ class User extends BaseEntity{
     get fullname(): string {
         return `${this.firstName} ${this.lastName}`;
     }
+
+    public comparePassword(password: string): Promise<boolean> {
+        return bcrypt.compare(password, this.password)
+    }
     
     @BeforeInsert()
     @BeforeUpdate()
