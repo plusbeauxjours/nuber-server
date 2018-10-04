@@ -1,3 +1,4 @@
+import { verificationTarget } from '../types/types';
 import { 
     BaseEntity, 
     Column, 
@@ -11,16 +12,16 @@ import {
 class Verification extends BaseEntity{
     @PrimaryGeneratedColumn() id: number
 
-    @Column({type: 'text'})
-    target: string;
+    @Column({ type: 'text', enum: ['PHONE', 'EMAIL'] })
+    target: verificationTarget;
 
-    @Column({type: 'text'})
+    @Column({ type: 'text' })
     payload: string;
 
-    @Column({type: 'text'})
+    @Column({ type: 'text' })
     key: string;
 
-    @Column({type: 'boolean', default: false})
+    @Column({ type: 'boolean', default: false })
     used: boolean;
 
     @CreateDateColumn() createdAt: string;
