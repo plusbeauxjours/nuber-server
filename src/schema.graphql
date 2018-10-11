@@ -38,6 +38,8 @@ type Ride {
   price: Float!
   distantce: String!
   duration: String!
+  driver: User!
+  passenger: User!
   createdAt: String!
   updatedAt: String
 }
@@ -61,6 +63,10 @@ type User {
   lastLat: Float
   lastOrientation: Float
   chat: Chat
+  messages: [Message]
+  verifications: [Verifications]
+  ridesAsPassenger: [Ride]
+  ridesAsDriver: [Ride]
   createdAt: String!
   updatedAt: String
 }
@@ -75,6 +81,7 @@ type Verifications {
   payload: String!
   key: String!
   used: Boolean!
+  user: User!
   createdAt: String!
   updatedAt: String
 }
