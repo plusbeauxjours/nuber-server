@@ -49,6 +49,7 @@ class Ride extends BaseEntity {
     duration: string;
 
     @CreateDateColumn() createdAt: string;
+    
     @UpdateDateColumn() updatedAt: string;
 }
 
