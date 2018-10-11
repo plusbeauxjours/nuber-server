@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt';
 import { IsEmail } from 'class-validator';
+import Chat from './Chat';
+import Message from './Message';
 import { 
     BaseEntity, 
     BeforeInsert,
@@ -7,6 +9,8 @@ import {
     Column, 
     CreateDateColumn, 
     Entity, 
+    ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn, 
     UpdateDateColumn,
 } from "typeorm";
@@ -61,6 +65,12 @@ class User extends BaseEntity{
     
     @Column({ type: "double precision", default: 0 })
     lastOrientation: number;
+
+    @ManyToOne(type => Chat, chat => chat.participants)
+    chat: Chat;
+
+    @OneToMany(type => Message, message => message.user)
+    messages: Message[];
     
     @UpdateDateColumn() updatedAt: string;
     
