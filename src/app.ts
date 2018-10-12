@@ -1,4 +1,3 @@
-
 import cors from "cors";
 import { GraphQLServer } from "graphql-yoga";
 import helmet from "helmet";
