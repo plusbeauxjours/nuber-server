@@ -27,12 +27,21 @@ const resolvers: Resolvers = {
                         error: error.message,
                         token: null
                     }
-                } try {
-
+                } 
+                try {
+                    await User.create({ 
+                        ...args, 
+                        profilePhoto: `http://graph.facebook.com/${fbId}/picture?type=square` 
+                    }).save();
+                    return {
+                        ok: true,
+                        error: null,
+                        token: 'Coming soon'
+                    };
                 } catch(error) {
                     return {
                         ok: false,
-                        error: error.MessageChannel,
+                        error: error.message,
                         token: null
                     }
                 }
