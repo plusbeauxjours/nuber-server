@@ -1,0 +1,14 @@
+type FacebookConnectResponse{
+    ok: Boolean!
+    error: String
+    token: String
+}
+
+type Mutation{
+    FacebookConnect(
+        firstName: String! 
+        lastName: string! 
+        email: String
+        fbId: String!
+    ): FacebookConnectResponse!
+}
