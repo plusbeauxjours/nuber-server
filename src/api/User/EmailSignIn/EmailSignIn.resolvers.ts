@@ -10,20 +10,28 @@ const resolvers: Resolvers = {
         EmailSignIn: async (
             _, 
             args: EmailSignInMutationArgs
-            ) : Promise<EmailSignInResponse> => {
-                const { email } = args;
+        ) : Promise<EmailSignInResponse> => {
+            const { email, password } = args;
             try {
                 const user = await User.findOne({ email });
-                if(user){
+                if(!user){
+                    return {
+                        ok: false,
+                        error: 'No User with that email',
+                        token: null
+                    };
+                }
+                const checkPassword = await user.comparePassword(password);
+                if (checkPassword){
                     return {
                         ok: true,
                         error: null,
-                        token: 'Coming Soon!'
+                        token: 'Coming Soon'
                     }
                 } else {
                     return {
                         ok: false,
-                        error: 'No User with that email',
+                        error: 'Wrong password',
                         token: null
                     }
                 }
@@ -32,9 +40,8 @@ const resolvers: Resolvers = {
                     ok: false,
                     error: error.message,
                     token: null
-                }
+                };
             }
-
         }
     }
 }
