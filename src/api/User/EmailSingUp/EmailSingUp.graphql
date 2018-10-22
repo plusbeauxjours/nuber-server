@@ -1,10 +1,10 @@
-type EmailSingUpResponse{
+type EmailSignUpResponse{
     ok: Boolean!
     error: String
     token: String
 }
 type Mutation {
-    EmailSingUp(
+    EmailSignUp(
         firstName: String!
         lastName: String!
         email: String!
@@ -12,5 +12,5 @@ type Mutation {
         profilePhoto: String!
         age: Int!
         phoneNumber: String!
-    ): EmailSingUpResponse!
+    ): EmailSignUpResponse!
 }
