@@ -6,7 +6,7 @@ import {
 import { Resolvers } from '../../../types/resolvers';
 import { sendVerificationSMS } from '../../../utils/sendSMS';
 
-const resolveres: Resolvers = {
+const resolvers: Resolvers = {
     Mutation: {
         StartPhoneVerification: async (
             _, 
@@ -40,4 +40,4 @@ const resolveres: Resolvers = {
     }
 }
 
-export default resolveres
+export default resolvers
