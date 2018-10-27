@@ -17,14 +17,16 @@ Server for the Uber Clone Course. GraphQL, Typescript, NodeJS
 ### Authentication:
 
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 
 ---
 
 ### Private Resolvers:
 
+- [x] Get My Profile
+- [ ] Request Email Verification
+- [ ] Complete Email Verification
 - [ ] Verify Email
-- [ ] Get My Profile
 - [ ] Update My Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
