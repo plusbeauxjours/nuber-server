@@ -24,9 +24,9 @@ Server for the Uber Clone Course. GraphQL, Typescript, NodeJS
 ### Private Resolvers:
 
 - [x] Get My Profile
-- [ ] Request Email Verification
-- [ ] Complete Email Verification
-- [ ] Verify Email
+- [x] Request Email Verification
+- [x] Complete Email Verification
+- [x] Verify Email
 - [ ] Update My Profile
 - [ ] Toggle Driving Mode
 - [ ] Report Location / Orientation
