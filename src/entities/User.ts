@@ -88,7 +88,7 @@ class User extends BaseEntity{
     
     @CreateDateColumn() createdAt: string;
 
-    get fullname(): string {
+    get fullName(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 

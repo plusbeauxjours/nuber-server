@@ -6,8 +6,8 @@ const mailGunClient = new Mailgun({
 });
 
 const sendEmail = (subject: string, html: string) => {
-    const emailData: Mailgun.messages.SendData = {
-        from "plusbeauxjours@gmail.com",
+    const emailData = {
+        from: "plusbeauxjours@gmail.com",
         to: "plusbeauxjours@gmail.com",
         subject,
         html
@@ -15,7 +15,7 @@ const sendEmail = (subject: string, html: string) => {
     return mailGunClient.messages().send(emailData)
 }
 
-export const sendVerificat ionEmail = (fullName: string, key: string) => {
+export const sendVerificationEmail = (fullName: string, key: string) => {
     const emailSubject = `Hello! ${fullName}, please verify your email`;
     const emailBody = `Verify your email by clicking <a href="http://plusbeauxjours.com/${key}/">here</a>`;
     return sendEmail(emailSubject, emailBody);
