@@ -2,6 +2,7 @@ type RequestEmailVerificationResponse {
     ok: Boolean!
     error: String
 }
+
 type Mutation {
     RequestEmailVerification: RequestEmailVerificationResponse!
 }
