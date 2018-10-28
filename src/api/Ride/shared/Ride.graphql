@@ -4,11 +4,11 @@ type Ride {
     pickUpAddress: String!
     pickUpLat: Float!
     pickUpLng: Float!
-    dropOffAddress: Float!
+    dropOffAddress: String!
     dropOffLat: Float!
     dropOffLng: Float!
     price: Float!
-    distantce: String!
+    distance: String!
     duration: String!
     driver: User!
     passenger: User!

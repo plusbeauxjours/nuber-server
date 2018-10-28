@@ -46,16 +46,16 @@ class Ride extends BaseEntity {
     price: number;
     
     @Column({ type: 'text' })
-    distantce: string;
+    distance: string;
 
     @Column({ type: 'text' })
     duration: string;
 
     @ManyToOne(type => User, user => user.ridesAsPassenger)
-    passenger: User[];
+    passenger: User;
 
     @ManyToOne(type => User, user => user.ridesAsDriver)
-    driver: User[];
+    driver: User;
 
     @CreateDateColumn() createdAt: string;
     

@@ -1,26 +1,26 @@
-import bcrypt from 'bcrypt';
-import { IsEmail } from 'class-validator';
-import { 
-    BaseEntity, 
+import bcrypt from "bcrypt";
+import { IsEmail } from "class-validator";
+import {
+    BaseEntity,
     BeforeInsert,
-    BeforeUpdate, 
-    Column, 
-    CreateDateColumn, 
-    Entity, 
+    BeforeUpdate,
+    Column,
+    CreateDateColumn,
+    Entity,
     ManyToOne,
     OneToMany,
-    PrimaryGeneratedColumn, 
-    UpdateDateColumn,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
 } from "typeorm";
-import Chat from './Chat';
-import Message from './Message';
-import Place from './Place';
-import Ride from './Ride';
+import Chat from "./Chat";
+import Message from "./Message";
+import Place from "./Place";
+import Ride from "./Ride";
 
 const BCRYPT_ROUNDS = 10;
 
 @Entity()
-class User extends BaseEntity{
+class User extends BaseEntity {
     @PrimaryGeneratedColumn() id: number;
 
     @Column({ type: "text", nullable: true })
@@ -29,14 +29,14 @@ class User extends BaseEntity{
 
     @Column({ type: "boolean", default: false })
     verifiedEmail: boolean;
-    
+
     @Column({ type: "text" })
     firstName: string;
 
     @Column({ type: "text" })
     lastName: string;
 
-    @Column({ type: "int", nullable: true})
+    @Column({ type: "int", nullable: true })
     age: number;
 
     @Column({ type: "text", nullable: true })
@@ -51,26 +51,26 @@ class User extends BaseEntity{
     @Column({ type: "text" })
     profilePhoto: string;
 
-    @Column({ type: "boolean", default: false})
+    @Column({ type: "boolean", default: false })
     isDriving: boolean;
-    
-    @Column({ type: "boolean", default: false})
-    isRidding: boolean;
-    
-    @Column({ type: "boolean", default: false})
+
+    @Column({ type: "boolean", default: false })
+    isRiding: boolean;
+
+    @Column({ type: "boolean", default: false })
     isTaken: boolean;
-    
+
     @Column({ type: "double precision", default: 0 })
     lastLng: number;
-    
+
     @Column({ type: "double precision", default: 0 })
     lastLat: number;
-    
+
     @Column({ type: "double precision", default: 0 })
     lastOrientation: number;
 
     @Column({ type: "text", nullable: true })
-    fbId: string
+    fbId: string;
 
     @ManyToOne(type => Chat, chat => chat.participants)
     chat: Chat;
@@ -87,24 +87,24 @@ class User extends BaseEntity{
     @OneToMany(type => Place, place => place.user)
     places: Place[];
 
-    @UpdateDateColumn() updatedAt: string;
-    
     @CreateDateColumn() createdAt: string;
+
+    @UpdateDateColumn() updatedAt: string;
 
     get fullName(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 
     public comparePassword(password: string): Promise<boolean> {
-        return bcrypt.compare(password, this.password)
+        return bcrypt.compare(password, this.password);
     }
-    
+
     @BeforeInsert()
     @BeforeUpdate()
     async savePassword(): Promise<void> {
-        if(this.password){
+        if (this.password) {
             const hashedPassword = await this.hashPassword(this.password);
-            this.password = hashedPassword
+            this.password = hashedPassword;
         }
     }
 
