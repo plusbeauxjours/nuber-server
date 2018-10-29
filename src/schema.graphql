@@ -54,6 +54,7 @@ type GetMyPlacesResponse {
 
 type Query {
   GetMyPlaces: GetMyPlacesResponse!
+  DriversSubscription: DriversSubscriptionResponse!
   GetMyProfile: GetMyProfileResponse!
   GetNearbyDrivers: GetNearbyDriversResponse!
 }
@@ -98,6 +99,11 @@ type CompletePhoneVerificationResponse {
   ok: Boolean!
   error: String
   token: String
+}
+
+type DriversSubscriptionResponse {
+  ok: Boolean!
+  error: String
 }
 
 type EmailSignInResponse {
