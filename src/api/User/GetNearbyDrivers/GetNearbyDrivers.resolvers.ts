@@ -1,4 +1,4 @@
-import { Between } from 'typeorm';
+import { Between, getRepository } from 'typeorm';
 import User from '../../../entities/User';
 import { GetNearbyDriversResponse } from 'src/types/graph';
 import { Resolvers } from '../../../types/resolvers';
@@ -14,12 +14,27 @@ const resolvers: Resolvers = {
             ) : Promise<GetNearbyDriversResponse> =>  {
                 const user: User = req.user;
                 const { lastLat, lastLng } = user;
-                const drivers = await User.find({
-                    isDriving: true
-                    lastLat: Between(lastLat - 0.05, lastLat + 0.05),
-                    lastLng: Between(lastLng - 0.05, lastLng + 0.05)
-                });
+                try {
+                    const drivers: User[] = await getRepository(User).find({
+                        isDriving: true,
+                        lastLat: Between(lastLat - 0.05, lastLat + 0.05),
+                        lastLng: Between(lastLng - 0.05, lastLng + 0.05)
+                    });
+                    return {
+                        ok: true,
+                        error: null,
+                        drivers
+                    }
+                } catch (error) {
+                    return {
+                        ok: false,
+                        error: error.message,
+                        drivers: null
+                    }
+                }
             }
         )
     }
 }
+
+export default resolvers;
