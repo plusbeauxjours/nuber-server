@@ -33,7 +33,7 @@ Server for the Uber Clone Course. GraphQL, Typescript, NodeJS
 - [x] Add Place
 - [x] Edit Place
 - [x] Delete Place
-- [ ] Get My Place
+- [x] Get My Place
 - [ ] See Nearby Drivers
 - [ ] Subscribe to Nearby Drivers
 - [ ] Request a Ride
