@@ -2,7 +2,7 @@ import { withFilter } from "graphql-yoga";
 import User from "../../../entities/User";
 
 const resolvers = {
-    Subscription : {
+    Subscription: {
         DriversSubscription: {
            subscribe: withFilter(
                (_, __, { pubSub }) => pubSub.asyncIterator("driverUpdate"), 
@@ -18,9 +18,8 @@ const resolvers = {
                         driverLastLng >= userLastLng - 0.05 &&
                         driverLastLng >= userLastLng + 0.05 
                     )
-               }
-
-           )
+                 }
+            )
         }
     }
 };

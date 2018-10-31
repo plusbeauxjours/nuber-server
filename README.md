@@ -36,8 +36,8 @@ Server for the Uber Clone Course. GraphQL, Typescript, NodeJS
 - [x] Get My Place
 - [x] See Nearby Drivers
 - [x] Subscribe to Nearby Drivers
-- [ ] Request a Ride
-- [ ] Get Nearby Rides Requests
+- [x] Request a Ride
+- [x] Get Nearby Rides Requests
 - [ ] Subscribe to Nearby Ride Requests
 - [ ] Subscribe to Ride Status
 - [ ] Get Chat Room Messages
