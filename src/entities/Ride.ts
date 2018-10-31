@@ -14,9 +14,6 @@ import User from './User';
 @Entity()
 class Ride extends BaseEntity {
     @PrimaryGeneratedColumn() id: number
-
-    @Column({ type: 'text' })
-    name: string;
     
     @Column({
         type: 'text', 

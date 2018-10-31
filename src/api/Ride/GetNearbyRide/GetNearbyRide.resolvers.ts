@@ -7,7 +7,7 @@ import privateResolver from '../../../utils/privateResolver';
 
 const resolvers: Resolvers = {
     Query: {
-        getNearbyRide: privateResolver(
+        GetNearbyRide: privateResolver(
             async (
                 _,
                 __,
