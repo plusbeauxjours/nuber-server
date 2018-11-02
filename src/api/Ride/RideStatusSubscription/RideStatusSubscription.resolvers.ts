@@ -14,9 +14,7 @@ const resolvers = {
                             passengerId
                         }
                     } = payload;
-                    return (
-                        user.id === driverId || user.id === passengerId;
-                    );
+                    return user.id === driverId || user.id === passengerId;
                 }
             )
         }
