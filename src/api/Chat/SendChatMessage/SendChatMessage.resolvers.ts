@@ -1,12 +1,12 @@
 import Chat from "../../../entities/Chat";
 import Message from "../../../entities/Message";
-import User from '../../../entities/User';
-import { 
+import User from "../../../entities/User";
+import {
     SendChatMessageMutationArgs,
     SendChatMessageResponse
-} from '../../../types/graph';
+} from "../../../types/graph";
 import { Resolvers } from "../../../types/resolvers";
-import privateResolver from '../../../utils/privateResolver';
+import privateResolver from "../../../utils/privateResolver";
 
 const resolvers: Resolvers = {
     Mutation: {
@@ -14,7 +14,7 @@ const resolvers: Resolvers = {
             async( 
                 _,
                 args: SendChatMessageMutationArgs,
-                { req }
+                { req, pubSub }
             ) : Promise<SendChatMessageResponse> => {
                 const user: User = req.user;
                 try {
@@ -26,6 +26,9 @@ const resolvers: Resolvers = {
                                 chat,
                                 user
                             }).save();
+                            pubSub.publish("newChatMessage", {
+                               MessageSubscription: message
+                            });
                             return {
                                 ok: true,
                                 error: null,
