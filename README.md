@@ -43,7 +43,7 @@ Server for the Uber Clone Course. GraphQL, Typescript, NodeJS
 - [x] Get Ride
 - [x] Subscribe to Ride Status
 - [x] Create a Chat Room
-- [ ] Get Chat Room Messages
+- [x] Get Chat Room Messages
 - [ ] Subscribe to Chat Room Messages
 - [ ] Send a Chat Message
 
