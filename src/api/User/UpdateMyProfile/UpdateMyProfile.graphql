@@ -1,10 +1,10 @@
 type UpdateMyProfileResponse {
     ok: Boolean!
     error: String
-} 
+}
 
 type Mutation {
-    UpdateMyProfile(        
+    UpdateMyProfile(
         firstName: String
         lastName: String
         email: String

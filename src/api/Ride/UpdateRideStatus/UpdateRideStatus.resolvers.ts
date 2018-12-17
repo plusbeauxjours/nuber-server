@@ -25,7 +25,7 @@ const resolvers: Resolvers = {
                                 {
                                     id: args.rideId,
                                     status: "REQUESTING"
-                                }, 
+                                },
                                 { relations: ["passenger"] }
                             );
                             if (ride) {
@@ -48,29 +48,33 @@ const resolvers: Resolvers = {
                         if (ride) {
                             ride.status = args.status;
                             ride.save();
-                            pubSub.publish("rideUpdate", { 
-                                RideStatusSubscription: ride 
+                            pubSub.publish("rideUpdate", {
+                                RideStatusSubscription: ride
                             })
                             return {
                                 ok: true,
-                                error: null
+                                error: null,
+                                rideId: ride.id
                             }
                         } else {
                             return {
                                 ok: false,
-                                error: "Cant update ride"
+                                error: "Cant update ride",
+                                rideId: null
                             };
                         }
                     } catch (error) {
                         return {
                             ok: false,
-                            error: error.message
+                            error: error.message,
+                            rideId: null
                         };
                     }
                 } else {
                     return {
                         ok: false,
-                        error: "You are not driving"
+                        error: "You are not driving",
+                        rideId: null
                     }
                 }
             }
